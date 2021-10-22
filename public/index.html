@@ -6,15 +6,22 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Buners Chat</title>
+    <link rel="stylesheet" href="style/style.css">
 
 </head>
 <body>
-<div class="message">
-    <ul>
+    <div class="hideDiv">
+        <ul>
+        </ul>
+    </div>
+    <div><label>Your nick <input type="text" class="userName"></label></div>
+    <div class="hideDiv"><label>Your message<input type="text" class="message"></label></div>
 
-    </ul>
-</div>
-<input type="text">
+    <div class="hideDiv">
+        <ul class="userList"></ul>
+    </div>
+
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="front.js"></script>
 </body>

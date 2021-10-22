@@ -1,21 +1,55 @@
 const socket = io();
+const messageInput = document.querySelector('.message');
+const userNameInput = document.querySelector('.userName');
+const usersList = document.querySelector('.userList');
+const divs = document.querySelectorAll('div');
 
-const input = document.querySelector('input');
 const ul = document.querySelector('ul');
+let yourName;
+
+const creteMessage = (message, user) => {
+  const newMessage = document.createElement('li');
+  newMessage.innerText = `${user}: ${message}`;
+  ul.append(newMessage);
+  messageInput.value = '';
+};
+
+/* const showOnlineUsers = () => {
+  usersList.innerHTML = '';
+  onlineUsers.forEach((user) => {
+    const newLi = document.createElement('li');
+    newLi.innerText = user;
+    usersList.append(newLi);
+  });
+}; */
+
+const writeNameUsers = () => {
+  yourName = userNameInput.value;
+  divs.forEach((div) => div.classList.toggle('hideDiv'));
+  socket.emit('Login', yourName);
+};
 
 socket.on('message', (data) => {
-  const { message } = data;
-  const newMessage = document.createElement('li');
-  newMessage.innerText = message;
-  ul.append(newMessage);
-  console.log(message);
+  const { message, user } = data;
+
+  creteMessage(message, user);
 });
 
-input.addEventListener('keyup', (e) => {
+socket.on('Login', (name) => {
+  const { user } = name;
+  const newLi = document.createElement('li');
+  newLi.innerText = user;
+  usersList.append(newLi);
+});
+
+messageInput.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
-    socket.emit('message', input.value);
-    const myMasage = document.createElement('li');
-    myMasage.innerText = input.value;
-    ul.append(myMasage);
+    socket.emit('message', messageInput.value);
+    creteMessage(messageInput.value, yourName);
+  }
+});
+userNameInput.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter') {
+    writeNameUsers();
   }
 });
