@@ -2,10 +2,30 @@ input{
     display: block;
 }
 
-.message{
+.messageVal{
+    color: blue;
 
+
+}
+
+.userNickInChat{
+    font-size: 23px;
+    color: red;
 }
 
 .hideDiv{
     display: none;
+}
+
+
+.yourMassage{
+    background-color: darkgray;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.odderMessage{
+    background-color: blue;
+    border-radius: 5px;
+    margin: 10px;
 }

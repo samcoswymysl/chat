@@ -10,14 +10,16 @@
 
 </head>
 <body>
-    <div class="hideDiv">
-        <ul>
-        </ul>
-    </div>
-    <div><label>Your nick <input type="text" class="userName"></label></div>
-    <div class="hideDiv"><label>Your message<input type="text" class="message"></label></div>
 
-    <div class="hideDiv">
+<div><h1>Buners Chat</h1></div>
+    <div class="hideDiv divToggle">
+        <div class="messageWindow"></div>
+    </div>
+    <div class="divToggle"><label>Your nick <input type="text" class="userName" required placeholder="Write your Nick"></label></div>
+    <div class="hideDiv divToggle"><label>Your message<input type="text" class="message" required placeholder="Write your message"></label></div>
+
+    <div class="hideDiv divToggle" >
+        <h3>Active Users:</h3>
         <ul class="userList"></ul>
     </div>
 
